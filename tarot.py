@@ -5,7 +5,7 @@ readings_dict = {}
 
 #load readings for cards from csv api to dictionary
 with open('TAROT_READINGS.csv', mode='r') as f:
-    csv_reader = csv.reader(f, delimiter=';')
+    csv_reader = csv.reader(f, delimiter=',')
     readings_dict = {rows[0]:rows[1:3] for rows in csv_reader}
 
 
@@ -37,16 +37,33 @@ def pull_three_cards(reading):
     second_card = full_arcana.pop(randint(0, len(full_arcana) - 1))
     third_card = full_arcana.pop(randint(0, len(full_arcana) - 1))
 
+    first_card_reading = ''
+    second_card_reading = ''
+    third_card_reading = ''
+
+    #assign meaning from csv data to each card readings
+    for x, y in readings_dict.items():
+        if x == first_card:
+            first_card_reading = y[0]
+        if x == second_card:
+            second_card_reading = y[0]
+        if x == third_card:
+            third_card_reading = y[0]
+
+    #print out the reading for past, present, and future cards pulled
+    print("When it comes to {reading}...".format(reading=reading))
+    print("The First card is {first_card} and represents {first_card_reading} in the Past.".format(first_card = first_card, first_card_reading = first_card_reading))
+
+    print("The Second card is {second_card} and represents {second_card_reading} in the Present.".format(second_card = second_card, second_card_reading = second_card_reading))
+
+    print("The Third card is {third_card} and represents {third_card_reading} in the Future.".format(third_card = third_card, third_card_reading = third_card_reading))
+
 #start tarot reading for user
 print("Welcome to Tarot Reader Express")
 user_reading = ''
 
-
 while user_reading not in type_of_reading:
-    user_reading = input("What type of reading are you looking for?")
+    user_reading = input("What type of reading are you looking for?\n1. Love\n2. Money\n3. Career\n")
 
-for x, y in readings_dict.items():
-    if first_card == x:
-        print(y)
-        
+
 pull_three_cards(user_reading)
