@@ -16,5 +16,5 @@ Please download both the `tarot.py` and `TAROT_READING.csv` to run in python3.
 ## Future Updates :star:
 - [ ] Reversed meanings of the tarot cards for more meaningful
 - [ ] Images of card to go with each pull
-- [ ] Addtional reading spread options
-- [ ] AI Generative text and ML to process full stories
+- [ ] Additional reading spread options
+- [ ] AI Generative text and ML to process full stories for user
